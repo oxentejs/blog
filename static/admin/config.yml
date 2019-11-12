@@ -2,7 +2,7 @@ backend:
   name: github
   repo: oxentejs/blog
   branch: master # Branch to update (optional; defaults to master)
-  site_domain: https://oxentejs.netlify.com
+  site_domain: oxentejs.netlify.com
 
 publish_mode: editorial_workflow
 media_folder: "static/images"
