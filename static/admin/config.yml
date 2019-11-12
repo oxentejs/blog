@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: pruanl/oxente.dev
+  repo: oxentejs/blog
   branch: master # Branch to update (optional; defaults to master)
-  site_domain: https://oxentedev.netlify.com
+  site_domain: https://oxentejs.netlify.com
 
 publish_mode: editorial_workflow
 media_folder: "static/images"
