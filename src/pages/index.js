@@ -2,7 +2,6 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { Layout, PostCard } from "../components/common";
-import { MetaData } from "../components/common/meta";
 
 const Index = ({ data, location, pageContext }) => {
     const { allMarkdownRemark } = useStaticQuery(graphql`
@@ -35,7 +34,6 @@ const Index = ({ data, location, pageContext }) => {
     const postList = allMarkdownRemark.edges;
     return (
         <>
-            <MetaData location={location} />
             <Layout isHome={true}>
                 <div className="container">
                     <section className="post-feed">

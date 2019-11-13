@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
 import { Layout } from "../components/common";
-import { MetaData } from "../components/common/meta";
 
 /**
  * Single post view (/:slug)
