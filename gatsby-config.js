@@ -48,12 +48,7 @@ module.exports = {
             icon: "https://gatsby.ghost.io/content/images/2019/01/favicon.png",
             lang: "en",
             logo: "https://static.ghost.org/v1.0.0/images/ghost-logo.svg",
-            navigation: [
-                { label: "Home", url: "/" },
-                { label: "Tag", url: "/tag/getting-started/" },
-                { label: "Author", url: "/author/ghost/" },
-                { label: "Help", url: "https://help.ghost.org" }
-            ],
+            navigation: [{ label: "Home", url: "/" }],
             timezone: "Etc/UTC",
             title: "Ghost & Gatsby",
             twitter: "@tryghost"

@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { Link, useStaticQuery, StaticQuery, graphql } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 
 import { Navigation } from ".";
-import config from "../../utils/siteConfig";
 
 // Styles
 import "../../styles/app.css";
@@ -94,18 +93,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             />
                                         </a>
                                     )}
-                                    <a
-                                        className="site-nav-item"
-                                        href={`https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <img
-                                            className="site-nav-icon"
-                                            src="/images/icons/rss.svg"
-                                            alt="RSS Feed"
-                                        />
-                                    </a>
                                 </div>
                             </div>
                             {isHome ? (
@@ -121,6 +108,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             <nav className="site-nav">
                                 <div className="site-nav-left">
                                     {/* The navigation items as setup in Ghost */}
+                                    <Navigation
+                                        data={site.navigation}
+                                        navClass="site-nav-item"
+                                    />
                                 </div>
                                 <div className="site-nav-right">
                                     <Link
@@ -133,6 +124,35 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             </nav>
                         </div>
                     </header>
+                    <main className="site-main">
+                        {/* All the main content gets inserted here, index.js, post.js */}
+                        {children}
+                    </main>
+                </div>
+                <div className="viewport-bottom">
+                    {/* The footer at the very bottom of the screen */}
+                    <footer className="site-foot">
+                        <div className="site-foot-nav container">
+                            <div className="site-foot-nav-left">
+                                <Link to="/">{site.title}</Link> © 2019 &mdash;
+                                Published with{" "}
+                                <a
+                                    className="site-foot-nav-item"
+                                    href="https://ghost.org"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Ghost
+                                </a>
+                            </div>
+                            <div className="site-foot-nav-right">
+                                <Navigation
+                                    data={site.navigation}
+                                    navClass="site-foot-nav-item"
+                                />
+                            </div>
+                        </div>
+                    </footer>
                 </div>
             </div>
         </>
@@ -315,6 +335,10 @@ const DefaultLayoutSettingsQuery = props => (
                             timezone
                             title
                             twitter
+                            navigation {
+                                label
+                                url
+                            }
                         }
                     }
                 }
