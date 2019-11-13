@@ -36,7 +36,28 @@ try {
  */
 module.exports = {
     siteMetadata: {
-        siteUrl: config.siteUrl
+        siteUrl: config.siteUrl,
+        siteNavegacao: {
+            codeinjection_foot: null,
+            codeinjection_head: null,
+            codeinjection_styles: "",
+            cover_image:
+                "https://static.ghost.org/v1.0.0/images/blog-cover.jpg",
+            description: "Thoughts, stories and JAMstack",
+            facebook: "ghost",
+            icon: "https://gatsby.ghost.io/content/images/2019/01/favicon.png",
+            lang: "en",
+            logo: "https://static.ghost.org/v1.0.0/images/ghost-logo.svg",
+            navigation: [
+                { label: "Home", url: "/" },
+                { label: "Tag", url: "/tag/getting-started/" },
+                { label: "Author", url: "/author/ghost/" },
+                { label: "Help", url: "https://help.ghost.org" }
+            ],
+            timezone: "Etc/UTC",
+            title: "Ghost & Gatsby",
+            twitter: "@tryghost"
+        }
     },
     plugins: [
         /**
