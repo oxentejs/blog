@@ -10,6 +10,13 @@ export const SearchWrapper = styled.section`
         justify-content: space-between;
         grid-gap: 30px;
         grid-template-columns: 1fr 1fr 1fr;
+        @media (max-width: 980px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 680px) {
+            grid-template-columns: 1fr;
+        }
     }
     .ais-Hits-item {
         list-style: none;
