@@ -28,7 +28,9 @@ const PostCard = ({ post, timeToRead, slug }) => {
                 {post.featured && <span>Featured</span>}
                 <h2 className="post-card-title">{post.title}</h2>
             </header>
-            <section className="post-card-excerpt">{post.excerpt}</section>
+            <section className="post-card-excerpt">
+                {String(post.excerpt).substr(0, 90) + "..."}
+            </section>
             <footer className="post-card-footer">
                 <div className="post-card-footer-left">
                     <div className="post-card-avatar">
@@ -50,7 +52,7 @@ const PostCard = ({ post, timeToRead, slug }) => {
                 </div>
 
                 <div className="post-card-footer-right">
-                    <div>{timeToRead} min</div>
+                    <div>{timeToRead && timeToRead + " min"}</div>
                 </div>
             </footer>
         </Link>

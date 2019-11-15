@@ -1,7 +1,8 @@
 const path = require(`path`);
 
 const config = require(`./src/utils/siteConfig`);
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
+require("dotenv").config();
+const queries = require("./src/utils/algolia_queries");
 
 /**
  * This is the place where you can tell Gatsby which plugins to use
@@ -12,6 +13,7 @@ const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
  */
 module.exports = {
     siteMetadata: {
+        title: "OxenteJS - Mais um blog",
         siteUrl: config.siteUrl,
         siteNavegacao: {
             codeinjection_foot: null,
@@ -23,7 +25,10 @@ module.exports = {
             icon: "https://gatsby.ghost.io/content/images/2019/01/favicon.png",
             lang: "en",
             logo: "https://static.ghost.org/v1.0.0/images/ghost-logo.svg",
-            navigation: [{ label: "Home", url: "/" }],
+            navigation: [
+                { label: "Home", url: "/" },
+                { label: "Pesquisar", url: "search" }
+            ],
             timezone: "Etc/UTC",
             title: "OxenteJS - Mais um blog",
             twitter: "@oxentejs"
@@ -58,10 +63,18 @@ module.exports = {
         },
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
+        {
+            resolve: `gatsby-plugin-algolia-search`,
+            options: {
+                appId: process.env.GATSBY_ALGOLIA_APP_ID,
+                apiKey: process.env.ALGOLIA_ADMIN_KEY,
+                indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME, // for all queries
+                queries,
+                chunkSize: 10000, // default: 1000
+                enablePartialUpdates: true // default: false
+            }
+        },
 
-        /**
-         *  Utility Plugins
-         */
         {
             resolve: `gatsby-transformer-remark`,
             options: {
